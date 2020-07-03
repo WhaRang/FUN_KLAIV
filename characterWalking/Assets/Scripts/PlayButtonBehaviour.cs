@@ -6,7 +6,7 @@ public class PlayButtonBehaviour : MonoBehaviour
 {
 
     public Animator transition;
-    public float transitionTime = 1f;
+    private float transitionTime = 1f;
 
     public void PlayGame()
     {        

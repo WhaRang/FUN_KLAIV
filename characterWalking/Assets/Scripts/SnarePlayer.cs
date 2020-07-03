@@ -20,11 +20,14 @@ public class SnarePlayer : MonoBehaviour
                          false, false, false, false, };
     private void Update()
     {
-        currTime += Time.deltaTime;
-        if (currTime >= PAUSE_TIME)
+        if (Starter.started)
         {
-            PlaySnare();
-            currTime = 0.0f;
+            currTime += Time.deltaTime;
+            if (currTime >= PAUSE_TIME)
+            {
+                PlaySnare();
+                currTime = 0.0f;
+            }
         }
     }
 
@@ -36,6 +39,7 @@ public class SnarePlayer : MonoBehaviour
         }
         if (snareLine[counter])
         {
+            FindObjectOfType<AudioManager>().Play("Snare");
             Instantiate(snareBulletPrefab, shootPoint.position, shootPoint.rotation);
             shootAnimator.SetTrigger("Shoot");
         }

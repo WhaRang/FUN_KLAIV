@@ -17,18 +17,25 @@ public class snareShooterMovement : MonoBehaviour
 
     void Update()
     {
-        speed = (Math.Abs(followedRB.position.y - snareShooterRB.position.y) / farDistance) * maxSpeed;
-        if (speed > maxSpeed)
+        if (followedRB != null)
         {
-            speed = maxSpeed;
-        }
-        if (followedRB.position.y > snareShooterRB.position.y)
-        {
-            velocity = new Vector2(0.0f, 1.0f);
-        }
+            speed = (Math.Abs(followedRB.position.y - snareShooterRB.position.y) / farDistance) * maxSpeed;
+            if (speed > maxSpeed)
+            {
+                speed = maxSpeed;
+            }
+            if (followedRB.position.y > snareShooterRB.position.y)
+            {
+                velocity = new Vector2(0.0f, 1.0f);
+            }
+            else
+            {
+                velocity = new Vector2(0.0f, -1.0f);
+            }
+        } 
         else
         {
-            velocity = new Vector2(0.0f, -1.0f);
+            velocity = new Vector2(0.0f, 0.0f);
         }
     }
 

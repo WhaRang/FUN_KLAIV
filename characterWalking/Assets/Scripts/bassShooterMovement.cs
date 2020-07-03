@@ -17,17 +17,25 @@ public class bassShooterMovement : MonoBehaviour
 
     void Update()
     {
-        speed = (Math.Abs(followedRB.position.y - bassShooterRB.position.y) / farDistance) * maxSpeed;
-        if (speed > maxSpeed)
+        if (followedRB != null)
         {
-            speed = maxSpeed;
+            speed = (Math.Abs(followedRB.position.y - bassShooterRB.position.y) / farDistance) * maxSpeed;
+            if (speed > maxSpeed)
+            {
+                speed = maxSpeed;
+            }
+            if (followedRB.position.y > bassShooterRB.position.y)
+            {
+                velocity = new Vector2(0.0f, 1.0f);
+            }
+            else
+            {
+                velocity = new Vector2(0.0f, -1.0f);
+            }           
         }
-        if (followedRB.position.y > bassShooterRB.position.y)
+        else
         {
-            velocity = new Vector2(0.0f, 1.0f);
-        } else
-        {
-            velocity = new Vector2(0.0f, -1.0f);
+            velocity = new Vector2(0.0f, 0.0f);
         }
     }
 

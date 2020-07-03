@@ -17,18 +17,25 @@ public class hatShooterMovement : MonoBehaviour
 
     void Update()
     {
-        speed = (Math.Abs(followedRB.position.x - hatShooterRB.position.x) / farDistance) * maxSpeed;
-        if (speed > maxSpeed)
+        if (followedRB != null)
         {
-            speed = maxSpeed;
-        }
-        if (followedRB.position.x > hatShooterRB.position.x)
-        {
-            velocity = new Vector2(1.0f, 0.0f);
+            speed = (Math.Abs(followedRB.position.x - hatShooterRB.position.x) / farDistance) * maxSpeed;
+            if (speed > maxSpeed)
+            {
+                speed = maxSpeed;
+            }
+            if (followedRB.position.x > hatShooterRB.position.x)
+            {
+                velocity = new Vector2(1.0f, 0.0f);
+            }
+            else
+            {
+                velocity = new Vector2(-1.0f, 0.0f);
+            }
         }
         else
         {
-            velocity = new Vector2(-1.0f, 0.0f);
+            velocity = new Vector2(0.0f, 0.0f);
         }
     }
 

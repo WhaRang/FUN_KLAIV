@@ -22,11 +22,14 @@ public class HatPlayer : MonoBehaviour
                         true, false, true, false };
     private void Update()
     {
-        currTime += Time.deltaTime;
-        if (currTime >= PAUSE_TIME)
+        if (Starter.started)
         {
-            PlayHat();
-            currTime = 0.0f;
+            currTime += Time.deltaTime;
+            if (currTime >= PAUSE_TIME)
+            {
+                PlayHat();
+                currTime = 0.0f;
+            }
         }
     }
 
@@ -42,12 +45,14 @@ public class HatPlayer : MonoBehaviour
             if (left)
             {
                 shootAnimator.SetTrigger("Left");
+                FindObjectOfType<AudioManager>().Play("Hat");
                 Instantiate(hatBulletPrefab, leftShootPoint.position, leftShootPoint.rotation);
                 left = false;
             }
             else
             {
                 shootAnimator.SetTrigger("Right");
+                FindObjectOfType<AudioManager>().Play("Hat");
                 Instantiate(hatBulletPrefab, rightShootPoint.position, rightShootPoint.rotation);
                 left = true;
             }

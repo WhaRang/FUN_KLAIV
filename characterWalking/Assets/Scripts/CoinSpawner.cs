@@ -32,6 +32,7 @@ public class CoinSpawner : MonoBehaviour
 
     public void SpawnCoin()
     {
+        Starter.started = true;
         GameObject obj = Instantiate(coinPrefab) as GameObject;
         newPosition = new Vector2(Random.Range(-screenBounds.x, screenBounds.x),
             Random.Range(-screenBounds.y, screenBounds.y));

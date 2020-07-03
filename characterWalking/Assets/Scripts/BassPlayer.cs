@@ -6,17 +6,17 @@ public class BassPlayer : MonoBehaviour
 {
     public Transform shootPoint;
     public GameObject bassBulletPrefab;
-    
-    public Animator shootAnimator;
 
-    private int counter = 0;
+    private static int LINE_SIZE = 32;
     private static float PAUSE_TIME = 0.15f;
+    private static float RARE_BASS = 0.3f;
+    private static float FREQUENT_BASS = 0.5f;
+
+    public Animator shootAnimator;
+    private int counter = 0;    
     private float currTime = 0.0f;
-    private static int LINE_SIZE = 16;
-    bool[] bassLine = { false, false, false, false,
-                        false, false, false, false,
-                        false, false, false, false,
-                        false, false, false, false };
+
+    bool[] bassLine = new bool[LINE_SIZE];
 
     private void Start()
     {
@@ -25,11 +25,14 @@ public class BassPlayer : MonoBehaviour
 
     private void Update()
     {
-        currTime += Time.deltaTime;
-        if (currTime >= PAUSE_TIME)
+        if (Starter.started)
         {
-            PlayBass();
-            currTime = 0.0f;
+            currTime += Time.deltaTime;
+            if (currTime >= PAUSE_TIME)
+            {
+                PlayBass();
+                currTime = 0.0f;
+            }
         }
     }
 
@@ -41,6 +44,7 @@ public class BassPlayer : MonoBehaviour
         }
         if (bassLine[counter])
         {
+            FindObjectOfType<AudioManager>().Play("Bass");
             Instantiate(bassBulletPrefab, shootPoint.position, shootPoint.rotation);
             shootAnimator.SetTrigger("Shoot");
         }        
@@ -49,9 +53,13 @@ public class BassPlayer : MonoBehaviour
 
     private void generateBassLine()
     {
-        for (int i = 0; i < LINE_SIZE; i++)
+        for (int i = 0; i < LINE_SIZE / 2; i++)
         {
-            bassLine[i] = Random.value >= 0.5 ? true : false;
+            bassLine[i] = Random.value <= RARE_BASS ? true : false;
+        }
+        for (int i = LINE_SIZE / 2; i < LINE_SIZE; i++)
+        {
+            bassLine[i] = Random.value <= FREQUENT_BASS ? true : false;
         }
     }
 }

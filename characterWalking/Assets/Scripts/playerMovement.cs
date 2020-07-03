@@ -32,9 +32,11 @@ public class playerMovement : MonoBehaviour
             }
             if (joystick.Horizontal >= 0.2f)
             {
+                Starter.started = true;
                 if (movement.x == -1.0)
                 {
-                    speed = 0.0f;
+                    walkAnimator.SetTrigger("Stop");
+                    speed = 0.0f;                    
                 }
                 else if (movement.y != 0)
                 {
@@ -47,8 +49,10 @@ public class playerMovement : MonoBehaviour
             }
             else if (joystick.Horizontal <= -0.2f)
             {
+                Starter.started = true;
                 if (movement.x == 1.0)
                 {
+                    walkAnimator.SetTrigger("Stop");
                     speed = 0.0f;
                 }
                 else if (movement.y != 0)
@@ -69,8 +73,10 @@ public class playerMovement : MonoBehaviour
             }
             if (joystick.Vertical >= 0.2f)
             {
+                Starter.started = true;
                 if (movement.y == -1.0)
                 {
+                    walkAnimator.SetTrigger("Stop");
                     speed = 0.0f;
                 }
                 else if (movement.x != 0)
@@ -84,8 +90,10 @@ public class playerMovement : MonoBehaviour
             }
             else if (joystick.Vertical <= -0.2f)
             {
+                Starter.started = true;
                 if (movement.y == 1.0)
                 {
+                    walkAnimator.SetTrigger("Stop");
                     speed = 0.0f;
                 }
                 else if (movement.x != 0)
@@ -100,6 +108,7 @@ public class playerMovement : MonoBehaviour
         }
         else if (Math.Abs(speed) < Math.Abs(DELTA_SPEED))
         {
+            walkAnimator.SetTrigger("Stop");
             speed = 0;
         }
         else if (speed > 0)
@@ -112,8 +121,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    void FixedUpdate()    {
-        
+    void FixedUpdate() {        
         moveCharacter(movement);
     }
 
@@ -122,4 +130,8 @@ public class playerMovement : MonoBehaviour
         rb.MovePosition(rb.position + (direcition * speed * Time.deltaTime));
     }
 
+    public Vector2 getMovement()
+    {
+        return rb.position + (movement * speed * Time.deltaTime);
+    }
 }

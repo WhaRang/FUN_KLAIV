@@ -20,6 +20,6 @@ public class CoinManager : MonoBehaviour
 
     private void Update()
     {
-        coinTF.text = "COINS: " + coins.ToString();
+        coinTF.text = coins.ToString();
     }
 }
