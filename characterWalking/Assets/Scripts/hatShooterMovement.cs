@@ -6,31 +6,27 @@ using UnityEngine;
 
 public class hatShooterMovement : MonoBehaviour
 {
-
-    public Rigidbody2D followedRB;
     public Rigidbody2D hatShooterRB;
 
-    private Vector2 velocity = new Vector2(0.0f, 0.0f);
-    private float speed = 0.0f;
-    private float maxSpeed = 2000.0f;
-    private float farDistance = 2000.0f;
+    private Vector2 velocity = new Vector2(1.0f, 0.0f);
+    private float corr = Screen.width / 4;
+    private float speed = Screen.width / 7;
 
     void Update()
     {
-        if (followedRB != null)
+        if (Starter.started)
         {
-            speed = (Math.Abs(followedRB.position.x - hatShooterRB.position.x) / farDistance) * maxSpeed;
-            if (speed > maxSpeed)
+            if (velocity.x == 0.0f)
             {
-                speed = maxSpeed;
+                velocity.x = 1.0f;
             }
-            if (followedRB.position.x > hatShooterRB.position.x)
-            {
-                velocity = new Vector2(1.0f, 0.0f);
-            }
-            else
+            if (velocity.x == 1.0f && hatShooterRB.position.x > Screen.width - corr)
             {
                 velocity = new Vector2(-1.0f, 0.0f);
+            }
+            else if (velocity.x == -1.0f && hatShooterRB.position.x < -Screen.width + corr)
+            {
+                velocity = new Vector2(1.0f, 0.0f);
             }
         }
         else
@@ -41,11 +37,11 @@ public class hatShooterMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        moveObject(velocity);
+        moveHatShooter(velocity);
     }
 
-    void moveObject(Vector2 direction)
+    void moveHatShooter(Vector2 direction)
     {
-        hatShooterRB.velocity = speed * direction;
+        hatShooterRB.MovePosition(hatShooterRB.position + (direction * speed * Time.deltaTime));
     }
 }

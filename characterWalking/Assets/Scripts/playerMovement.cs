@@ -125,9 +125,9 @@ public class playerMovement : MonoBehaviour
         moveCharacter(movement);
     }
 
-    void moveCharacter(Vector2 direcition)
+    void moveCharacter(Vector2 direction)
     {
-        rb.MovePosition(rb.position + (direcition * speed * Time.deltaTime));
+        rb.MovePosition(rb.position + (direction * speed * Time.deltaTime));
     }
 
     public Vector2 getMovement()

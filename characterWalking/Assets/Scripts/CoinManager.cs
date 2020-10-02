@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CoinManager : MonoBehaviour
 {
     public Text coinTF;
-    private static float coins = 0.0f;
+    private static int coins = 0;
 
     public static void AddCoin()
     {
@@ -21,5 +21,10 @@ public class CoinManager : MonoBehaviour
     private void Update()
     {
         coinTF.text = coins.ToString();
+    }
+
+    public static int getCoins()
+    {
+        return coins;
     }
 }

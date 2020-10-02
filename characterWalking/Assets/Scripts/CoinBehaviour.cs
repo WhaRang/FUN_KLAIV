@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class CoinBehaviour : MonoBehaviour
 {
 
-    public float despawnTime = 5.0f;
+    private float despawnTime = 7.0f;
 
     void Start()
     {
