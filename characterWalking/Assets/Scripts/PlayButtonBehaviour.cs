@@ -11,6 +11,7 @@ public class PlayButtonBehaviour : MonoBehaviour
     public void PlayGame()
     {        
         StartCoroutine(LoadNextLevel());
+        CoinManager.zeroCoins();
     }
 
     IEnumerator LoadNextLevel()

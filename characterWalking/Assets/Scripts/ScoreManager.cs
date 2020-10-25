@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     public Text scoreTF;
 
-    private void Update()
+    private void Start()
     {
         scoreTF.text = "SCORE: " + CoinManager.getCoins();
     }
