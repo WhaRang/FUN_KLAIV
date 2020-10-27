@@ -8,8 +8,14 @@ public class GameEnder : MonoBehaviour
     public Animator gameEndAnimator;
     private float transitionTime = 2f;
 
+    public GameObject coinButton;
+    public GameObject joystick;
+
+
     public void endGame()
     {
+        coinButton.SetActive(false);
+        joystick.SetActive(false);
         StartCoroutine(loadGameEnd());
     }
 

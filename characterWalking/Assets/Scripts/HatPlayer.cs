@@ -13,7 +13,7 @@ public class HatPlayer : MonoBehaviour
     private bool left = true;
 
     private int counter = 0;
-    private static float PAUSE_TIME = 0.15f;
+    private static float PAUSE_TIME = 0.20f;
     private float currTime = 0.0f;
     private static int LINE_SIZE = 16;
     bool[] hatLine =  { true, false, true, false,

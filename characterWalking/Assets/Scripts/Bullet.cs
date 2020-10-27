@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float speed = Screen.width / 6;
+    private float speed = Screen.width / 4;
     private static float CORRECTION = 200f;
 
     public Rigidbody2D rb;

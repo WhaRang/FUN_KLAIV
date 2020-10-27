@@ -8,7 +8,7 @@ public class BassPlayer : MonoBehaviour
     public GameObject bassBulletPrefab;
 
     private static int LINE_SIZE = 32;
-    private static float PAUSE_TIME = 0.15f;
+    private static float PAUSE_TIME = 0.20f;
     private static float RARE_BASS = 0.3f;
     private static float FREQUENT_BASS = 0.5f;
 

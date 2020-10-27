@@ -121,6 +121,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &35972907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 35972908}
+  - component: {fileID: 35972909}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &35972908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35972907}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &35972909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35972907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae4c46af640a3a4eb36a927574c6c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEndAnimator: {fileID: 165983961}
+  coinButton: {fileID: 1625633919}
+  joystick: {fileID: 908578779}
 --- !u!1001 &57844676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -586,7 +632,6 @@ GameObject:
   - component: {fileID: 165983957}
   - component: {fileID: 165983962}
   - component: {fileID: 165983961}
-  - component: {fileID: 165983963}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -672,7 +717,7 @@ RectTransform:
   - {fileID: 1073285682}
   - {fileID: 1479936188}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -710,19 +755,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &165983963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165983956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ae4c46af640a3a4eb36a927574c6c3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEndAnimator: {fileID: 165983961}
 --- !u!1 &170947947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,7 +1131,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &243621963
 MonoBehaviour:
@@ -1169,6 +1201,13 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - single: 1
+    name: FatPhonk
+    clip: {fileID: 8300000, guid: 26fe35dedb8898949b895ff9aeacb9d4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
 --- !u!1 &251813711
 GameObject:
@@ -1327,7 +1366,7 @@ Transform:
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &286301229
 MonoBehaviour:
@@ -1401,7 +1440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 286301231}
   hb: {fileID: 1073285683}
-  gameEnder: {fileID: 165983963}
+  gameEnder: {fileID: 35972909}
 --- !u!1 &289468023
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,7 +2314,7 @@ Transform:
   - {fileID: 1708422420}
   - {fileID: 1817935468}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &502405037
 MonoBehaviour:
@@ -2374,7 +2413,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &561064093
 GameObject:
@@ -2907,7 +2946,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &857049405
 GameObject:
@@ -2967,7 +3006,7 @@ Transform:
   - {fileID: 948178425}
   - {fileID: 94700603}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &857049408
 MonoBehaviour:
@@ -2999,6 +3038,12 @@ MonoBehaviour:
   hatBulletPrefab: {fileID: 4436831518863251597, guid: af6f0b642d4c7934da3f576c954c7910,
     type: 3}
   shootAnimator: {fileID: 1503730078}
+--- !u!1 &908578779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+    type: 3}
+  m_PrefabInstance: {fileID: 57844676}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &948178424
 GameObject:
   m_ObjectHideFlags: 0
@@ -3640,7 +3685,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1175741642
 GameObject:
@@ -4641,7 +4686,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 57844676}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 908578779}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
@@ -4811,7 +4856,7 @@ Transform:
   - {fileID: 1355094568}
   - {fileID: 459975678}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1520924737
 MonoBehaviour:
@@ -5952,7 +5997,7 @@ Transform:
   - {fileID: 841087227}
   - {fileID: 956551676}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1870310626
 Rigidbody2D:
@@ -6047,7 +6092,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2019236310
 GameObject:
