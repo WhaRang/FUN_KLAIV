@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     {
         Starter.started = false;
         Destroy(gameObject);
-        gameEnder.endGame();
+        gameEnder.EndGame();
     }
 
 }

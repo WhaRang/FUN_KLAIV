@@ -11,7 +11,15 @@ public class CoinBehaviour : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(despawnCoinCorountine());
+        StartCoroutine(DespawnCoinCorountine());
+    }
+
+    private void Update()
+    {
+        if (GameEnder.ender.IsEnded())
+        {
+            RemoveCoin();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,23 +28,28 @@ public class CoinBehaviour : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("CoinPickUp");
             CoinManager.AddCoin();
-            despawnCoin();
+            DespawnCoin();
         }
     }
 
-    private void despawnCoin()
+    private void DespawnCoin()
     {
         Destroy(this.gameObject);
     }
 
-    IEnumerator despawnCoinCorountine()
+    private void RemoveCoin()
+    {
+        CoinManager.RemoveCoin();
+        DespawnCoin();
+        FindObjectOfType<AudioManager>().Play("CoinLoose");
+    }
+
+    IEnumerator DespawnCoinCorountine()
     {
         while(true)
         {
             yield return new WaitForSeconds(despawnTime);
-            CoinManager.RemoveCoin();
-            despawnCoin();
-            FindObjectOfType<AudioManager>().Play("CoinLoose");
+            RemoveCoin();
         }
     }
 }

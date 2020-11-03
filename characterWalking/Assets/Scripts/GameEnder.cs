@@ -5,21 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class GameEnder : MonoBehaviour
 {
+    public static GameEnder ender;
+
     public Animator gameEndAnimator;
     private float transitionTime = 2f;
 
     public GameObject coinButton;
     public GameObject joystick;
 
+    bool isEnded;
 
-    public void endGame()
+    private void Awake()
+    {
+        if (ender == null)
+            ender = this.gameObject.GetComponent<GameEnder>();
+    }
+
+    public void EndGame()
     {
         coinButton.SetActive(false);
         joystick.SetActive(false);
-        StartCoroutine(loadGameEnd());
+        isEnded = true;
+        StartCoroutine(LoadGameEnd());
     }
 
-    IEnumerator loadGameEnd()
+    IEnumerator LoadGameEnd()
     {
         gameEndAnimator.SetTrigger("End");
         yield return new WaitForSeconds(transitionTime);
@@ -27,5 +37,10 @@ public class GameEnder : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
+    }
+
+    public bool IsEnded()
+    {
+        return isEnded;
     }
 }
